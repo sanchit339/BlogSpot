@@ -14,17 +14,11 @@ const fs = require('fs');
 const salt = bcrypt.genSaltSync(10);
 const secret = 'asdfe45we45w345wegw345werjktjwertkj';
 
-const allowedOrigins = ['https://blog-dusky-alpha.vercel.app'];
+const allowedOrigin = 'https://blog-dusky-alpha.vercel.app';
 
 app.use(cors({
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,  // Enable credentials (cookies, authorization headers, etc.)
+  origin: allowedOrigin,
+  credentials: true,
 }));
 // app.use(cors({
 //   origin: "*",
